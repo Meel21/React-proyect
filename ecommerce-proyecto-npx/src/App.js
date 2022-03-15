@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import React from 'react';
+import ComponentesClase from './components/Titulo/Titulo/ComponentesClase';
+import Input from './components/Input/input';
+import Titulo from './components/Titulo/Titulo/Titulo';
+import NavBarComp from './components/NavBar/NavBarComp';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+
+
+const ItemListContainer = () => {
+  return <div>
+     ItemListContainer
+  </div>
+}
+// function saludos (){
+//   console.log ('saludando')
+// }
+ function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+    <div className="App" style= {{backgroundColor: 'grey'}} onClick={ () => console.log ('click')}>
+        Tienda e-commerce
+    <Router>
+      <NavBarComp /> 
+    </Router>
+       
+    <ItemListContainer />
+
+        {/* {/* <Titulo greeting='Saludo' />
+        <ComponentesClase /> 
+        <ItemListContainer />
+        <Input placeholder={placeholder} saludar={saludos}/> */}
+      
     </div>
   );
 }
