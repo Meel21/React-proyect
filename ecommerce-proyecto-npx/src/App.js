@@ -6,7 +6,7 @@ import Input from './components/Input/input';
 import Titulo from './components/Titulo/Titulo/Titulo';
 import NavBarComp from './components/NavBar/NavBarComp';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ItemListContainer = () => {
   return <div>

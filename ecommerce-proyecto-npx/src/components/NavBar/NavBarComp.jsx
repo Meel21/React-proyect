@@ -2,6 +2,7 @@ import {Navbar,Nav,NavDropdown,Button,Container,Form,FormControl} from 'react-bo
 import CartWidget from '../CartWidget/CartWidget';
 import {Link} from 'react-router-dom';
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBarComp = () => {
   return (
