@@ -21,7 +21,7 @@ const ItemListContainer = () => {
   return (
   
     <div className="App" style= {{backgroundColor: 'grey'}} onClick={ () => console.log ('click')}>
-        Tienda e-commerce
+    
     <Router>
       <NavBarComp /> 
     </Router>

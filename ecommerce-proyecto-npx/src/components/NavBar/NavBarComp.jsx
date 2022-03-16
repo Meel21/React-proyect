@@ -4,10 +4,10 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const NavBarComp = () => {
+function NavBarComp()  {
   return (
     <>
-<CartWidget />
+
 <Navbar bg="light" expand="lg">
   <Container fluid>
     <Navbar.Brand href="#">La Tiendita</Navbar.Brand>
@@ -44,7 +44,9 @@ const NavBarComp = () => {
       </Form>
     </Navbar.Collapse>
   </Container>
+  <CartWidget />
 </Navbar>
+
           
       </>
     )
