@@ -1,15 +1,18 @@
-import {Navbar,Nav,NavDropdown,Button,Container,Form,FormControl} from 'react-bootstrap';
-import CartWidget from '../CartWidget/CartWidget';
-import {Link} from 'react-router-dom';
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "react-bootstrap/Navbar"
+import Container from "react-bootstrap/Container"
+import Nav from "react-bootstrap/Nav"
+import NavDropdown from "react-bootstrap/NavDropdown"
+import Button from "react-bootstrap/Button"
+import Form from "react-bootstrap/Form"
+import FormControl from "react-bootstrap/FormControl"
+import CartWidget from '../CartWidget/CartWidget'
+
 
 function NavBarComp()  {
   return (
-    <>
-
+<>
 <Navbar bg="light" expand="lg">
-  <Container fluid>
+  <Container>
     <Navbar.Brand href="#">La Tiendita</Navbar.Brand>
 
     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -42,13 +45,13 @@ function NavBarComp()  {
         />
         <Button variant="outline-success">Search</Button>
       </Form>
+        <CartWidget />
     </Navbar.Collapse>
   </Container>
-  <CartWidget />
 </Navbar>
+</> 
 
           
-      </>
     )
   }
 export default NavBarComp;
