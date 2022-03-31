@@ -1,47 +1,54 @@
 import {useEffect,useState} from 'react';
 import ItemCount from './ItemCount';
-import getItems from '../helpers/getItems';
+import {getFetch} from '../helpers/gFetch';
+import ItemList from '../Container/ItemList'
+import {useParams} from 'react-router-dom'
 
-function ItemListContainer() {
-  const [productos,setProductos] = useState ([]);
-    // const [loading,setLoading] = useState (true)
+
+function ItemListContainer( {saludo}) {
+  // const [bool,setBool]= useState (true)
+   const [loading,setLoading] = useState (true)
+   const [prods,setProds] = useState ([])
+
+
+   const {id} = useParams()
 
 
     useEffect (() => {
-
-      getItems
-      .then ((data) => setProductos(data))
-      .catch((err) => console.error (`error: ${err}`))
+      if (id){
+      getFetch
+      .then (resp => setProds (resp.filter (prod => prod.categoria === id)))
+      .catch((err) => console.error (err))
+      .finally (() => setLoading (false))
     
-    }, [])
+    }else {
+
+      getFetch
+      .then (resp => setProds (resp))
+      .catch((err) => console.error (err))
+      .finally (() => setLoading (false))
+    }
+    
+  },[id])
+
+  const onAdd = (cant) =>{
+    console.log (cant)
+  }
 
   return (
-    <div className="container">
-      {
-//  (loading)
-//  ?
-//  ( <Loading />)
-//  :
- <div className="container">
-   <h1 className="my-5 text-center">Ropa</h1>
+    
+<>
+ <div>{saludo}</div>
+   {
+     loading ? <h2> Cargando....</h2>
+     :
+     <ItemList prods = {prods} />
+   }
 
-   <div className='row'>
-     {productos.map ((prod) =>
-
-    <div className="col-md-4 mb-5" key={prod.id}>
-      <ItemCount stock= {prod.stock} initial= { 1 }/>
-      <h3>{prod.title}</h3>
-      <h4>{prod.price}</h4>
-     
-    </div>     
-     
-     )}
-
-    </div>
-  </div>
-  }
-  </div>
+      <ItemCount initial= {1} stock= {10} onAdd= {onAdd}/>
+    </>
   )
+  
 }
 
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-function ItemCount ({stock,initial,onAdd}){
+const ItemCount= ({stock,initial,onAdd}) => {
 
 const [count,setCount] = useState (initial)
 
@@ -19,7 +19,7 @@ function handleDecrease (){
 }
 
  const add = () => {
-     console.log (count)
+     onAdd (count)
  }
 
  return (
