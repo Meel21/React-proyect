@@ -14,7 +14,7 @@ function NavBarComp()  {
 <>
 <Navbar bg="light" expand="lg">
   <Container>
-    <Nav.Link to="/">La Tiendita </Nav.Link>
+    <NavLink to="/">La Tiendita </NavLink>
 
     <Navbar.Toggle aria-controls="navbarScroll" />
     <Navbar.Collapse id="navbarScroll">
@@ -23,18 +23,9 @@ function NavBarComp()  {
         style={{ maxHeight: '100px' }}
         navbarScroll
       >
-        <NavLink href="#action1">Home</NavLink>
-        <NavLink href="#action2">Sobre Nosotros </NavLink>
-        <NavDropdown title="Productos" id="navbarScrollingDropdown">
-          <NavLink to="categoria/tortas">Tortas</NavLink>
-          <NavLink to="categoria/dulces">Dulces</NavLink>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action5">
-            Something else here
-          </NavDropdown.Item>
-        </NavDropdown>
+       <p> <NavLink to="/">Home</NavLink> </p> 
+        <p><NavLink to="/">Sobre Nosotros </NavLink> </p> 
         <NavLink to='cart' className= {({ isActive}) => isActive ? 'active' : ''}>
-        <CartWidget />
         </NavLink>
       </Nav>
       <Form className="d-flex">
@@ -45,6 +36,7 @@ function NavBarComp()  {
           aria-label="Search"
         />
         <Button variant="outline-success">Search</Button>
+        <CartWidget />
       </Form>
      
     </Navbar.Collapse>

@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom'
 
 
 function ItemListContainer( {saludo}) {
-  // const [bool,setBool]= useState (true)
+  const [bool,setBool]= useState (true)
    const [loading,setLoading] = useState (true)
    const [prods,setProds] = useState ([])
 

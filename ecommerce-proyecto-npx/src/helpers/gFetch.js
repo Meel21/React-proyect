@@ -26,7 +26,7 @@
 
     })
 
-    const producto = {id: '1',category: 'Zapatillas',name: 'juan',price:'10000', stock: 2, foto: 'https://picsum.photos/200/300'}
+    const producto = {id: '1',category: 'Zapatillas',name: 'juan',price:'$10000',stock: 3, foto: 'https://picsum.photos/200/300'}
 
   export const getFetchOne = new Promise ((res,rej) => {
 

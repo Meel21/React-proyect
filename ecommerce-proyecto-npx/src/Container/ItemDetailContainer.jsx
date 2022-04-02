@@ -1,12 +1,12 @@
 import { useEffect,useState } from "react";
 import {useParams} from "react-router-dom";
 import ItemDetail from '../Container/ItemDetail'
-import {getFetchOne} from '../helpers/gFetch';
+import {getFetch,getFetchOne} from '../helpers/gFetch';
 
 function ItemDetailContainer (){
     const [producto,setProducto]= useState ({})
 
-const {} =useParams ()
+const {detalleId} =useParams ()
 
 useEffect (() =>{
     getFetchOne
