@@ -1,55 +1,59 @@
-import {useEffect,useState} from 'react';
-import ItemCount from './ItemCount';
-import {getFetch} from '../helpers/gFetch';
-import ItemList from '../Container/ItemList'
-import {useParams} from 'react-router-dom'
+import {useState, useEffect, memo} from "react";
+import { useParams } from "react-router-dom";
+
+import Loading from '../assets/burguer.jpg';
+import ItemList from "./ItemList";
 
 
-function ItemListContainer( {saludo}) {
-  const [bool,setBool]= useState (true)
-   const [loading,setLoading] = useState (true)
-   const [prods,setProds] = useState ([])
 
+const ItemListContainer = memo(({nameCategory, greetings}) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const {idCategory} = useParams();
 
-   const {id} = useParams()
-
-
-    useEffect (() => {
-      if (id){
-      getFetch
-      .then (resp => setProds (resp.filter (prod => prod.categoria === id)))
-      .catch((err) => console.error (err))
-      .finally (() => setLoading (false))
-    
-    }else {
-
-      getFetch
-      .then (resp => setProds (resp))
-      .catch((err) => console.error (err))
-      .finally (() => setLoading (false))
+  useEffect(() => {
+    const db = getFirestore();
+    if(idCategory) {
+      const queryProducts = query(collection(db, 'Item'), where('category', '==', idCategory));
+      getDocs(queryProducts)
+      .then(resp => { setProducts( resp.docs.map(product => ({id: product.id, ...product.data()}))); 
+      setLoading(false); })
+    } else {
+      const queryProducts = collection(db, 'Item');
+      getDocs(queryProducts)
+      .then(resp => { setProducts( resp.docs.map(product => ({id: product.id, ...product.data()})) ); 
+      setLoading(false); })
     }
-    
-  },[id])
-
-  const onAdd = (cant) =>{
-    console.log (cant)
-  }
-
-  return (
-    
-<>
- <div>{saludo}</div>
-   {
-     loading ? <h2> Cargando....</h2>
-     :
-     <ItemList prods = {prods} />
-   }
-
-      <ItemCount initial= {1} stock= {10} onAdd= {onAdd}/>
-    </>
-  )
+  }, [idCategory]);
   
-}
-
+  if (idCategory === 'Mate') {
+    nameCategory = 'Mate';}
+      if (idCategory === 'Accesorios') {
+    nameCategory = 'Accesorios';
+   
+  } else if (idCategory === 'Termos') {
+    nameCategory = 'Termos';
+    
+  }
+  return (
+    <main>
+      
+    <Prod/>
+      
+     
+     
+      {loading ? 
+      <img src={Loading} alt="Cargando" className="loading"/>
+      : 
+      
+      <ItemList
+      products={products}
+      
+      
+      />}
+      
+    </main>
+  )
+  } )
 
 export default ItemListContainer;

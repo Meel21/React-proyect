@@ -1,12 +1,15 @@
+import React from 'react';
 
 
 function CartWidget () {
    return (
-   
-   <i className="fa-solid fa-cart-shopping"></i>
+   <> 
+    <i className="fas fa-cart-shopping"></i>
+    </>
+  
       
       
-   )
+   );
 }
 
 export default CartWidget;

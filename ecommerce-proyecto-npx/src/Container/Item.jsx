@@ -1,30 +1,30 @@
-// import ItemCount from './Container/ItemCount'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card'
 
-function Item( {prod} ){
+const Item = (({ product }) => {
 
-    return (
-      <Link to={`detalle/${prod.id}`}>
-          <div
-          className='col-md-4' 
-          >
-              <div className='card w-100 mt-5'>
-                  <div className='card-header'>
-                      {`${prod.name} - ${prod.category}`}
-                </div>
-                <div className='card-body'>
-                    <img src={prod.foto} alt='' className='w-50' />
-                    {prod.price}
-                </div>
-                <div className= 'card-footer'>
-            </div>
-        </div>
-    </div>
+  return (
 
+    <Card style={{ width: '18rem', marginBottom: 40, marginLeft: 20, border: " solid 3px #ac9376" }} key={product.id}>
+      <div key={product.id}>
+        <Card.Text className="addCart2">{product.category}</Card.Text>
+        <Card.Img variant="top" src={product.image} alt="Imagen de producto" />
+        <Card.Body>
+          <Card.Title>{product.name}</Card.Title>
+          <Card.Text>
+            $ {product.price}
+          </Card.Text>
+        </Card.Body>
 
+        <Card.Body>
+          <Card.Link ><Link to={`/details/${product.id}`}><button className='btnVerMas' >VER MAS</button></Link></Card.Link>
+        </Card.Body>
 
-      </Link>
-    )
-    }
+      </div>
+
+    </Card>
+
+  )
+})
 
 export default Item;

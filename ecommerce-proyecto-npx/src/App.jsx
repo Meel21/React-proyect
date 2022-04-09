@@ -1,33 +1,40 @@
-import {Suspense} from 'react'
-import {BrowserRouter,Route,Routes,Navigate} from 'react-router-dom';
-import NavBarComp from './components/NavBar/NavBarComp';
-import  ItemListContainer from './Container/ItemListContainer';
-import ItemDetailContainer from './Container/ItemDetailContainer';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import Cart from './components/Cart/Cart';
-import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Footer from './components/Footer/Footer';
+import CartContextProvider from './context/CartContext';
+import ItemListContainer from './Container/ItemListContainer';
+import BotonCheckOut from './components/BotonCheckout/BotonCheckOut';
+import ItemDetailContainer from './Container/ItemDetailContainer';
 
 
- function App() {
-
+function App() {
   return (
-    <Suspense fallback= {<h1> Cargando.. </h1>} >
-    <BrowserRouter>
-    <div className="App"  onClick={ () => console.log ('click')}>
-        <NavBarComp />  
-          <Routes>
-            <Route path= "/"  element={ <ItemListContainer saludo=' soy item' />
-            }
-            />
-            <Route path="/categoria/:id" element={ <ItemListContainer saludo='hola soy item'/>} />    
-            <Route path="/detalle/:detalleId" element={  <ItemDetailContainer/>} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/*' element={<Navigate to='/' />}/>
-             
+    <CartContextProvider>
+      <BrowserRouter>
+      <div className="App">
+
+        <Routes>
+          <Route  
+            path="/all" 
+            element={<ItemListContainer />}/>
+                      <Route  
+            path="/category/:idCategory" 
+            element={<ItemListContainer/>}/>
+          <Route  
+            path="/details/:idProd"
+            element={<ItemDetailContainer/>}/>
+          <Route  
+            path="/cart" 
+            element={<Cart/>}/>
+           <Route path="/Checkout" element={<BotonCheckOut/>}/>
         </Routes>
-    </div>
+      
+        <Footer/>
+      </div>
     </BrowserRouter>
- </Suspense>
+    </CartContextProvider>
   );
 }
 

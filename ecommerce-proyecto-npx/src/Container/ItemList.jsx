@@ -1,13 +1,17 @@
-import Item from "../Container/Item"
+import Item from "./Item"
 
-function ItemList ({prods}){
 
-    return (
-
-        <>
-        {prods.map((prod) => <Item key={prod.id} prod={prod} /> ) }
-        </>
-    )
+const ItemList = ({products}) => {
+  return (
+   
+    <div>
+    <section 
+    className="itemList"> 
+      { products.map(product => <Item key={product.id} product={product}/>)}
+    </section>
+    
+    </div>
+  )
 }
 
 export default ItemList

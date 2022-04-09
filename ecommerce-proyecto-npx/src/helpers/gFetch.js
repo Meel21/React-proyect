@@ -1,11 +1,11 @@
  const productos = [
-    { id: '1', title:'Zapatillas',category: 'ropa',price: 1000,stock: 2, foto: 'https://picsum.photos/200/300'},
-    { id: '2', title:'Zapatillas',category: 'ropa',price: 1000,stock: 2, foto: 'https://picsum.photos/200/300'},
-    { id: '3', title:'Zapatillas',category: 'ropa',price: 1000 , stock: 7, foto: 'https://picsum.photos/200/300'},
-    { id: '4', title:'Zapatillas',category: 'ropa',price: 1000,stock: 2,foto: 'https://picsum.photos/200/300'},
-    { id: '5', title:'Zapatillas',category: 'ropa',price: 1000,stock: 12,foto: 'https://picsum.photos/200/300'},
-    { id: '6', title:'Zapatillas',category: 'ropa',price: 1000,stock:17,foto: 'https://picsum.photos/200/300'},
-    { id: '7', title:'Zapatillas',category: 'ropa',price: 1000,stock: 16, foto: 'https://picsum.photos/200/300'}
+    { id: '1', title:'Termo STANLEY',category: 'Termos',price: 1000,stock: 2, foto:'/assets/img/termi.jpg'},
+    { id: '2', title:'Termo Calabza',category: 'Termos',price: 1000,stock: 2, foto: '/assets/img/termi.jpg'},
+    { id: '3', title:'Termo KAWASKAI',category: 'Termos',price: 1000 , stock: 7, foto: 'assets/img/termi.jpg'},
+    { id: '4', title:'Termo ROCA',category: 'Termos',price: 1000,stock: 2,foto: 'assets/img/termi.jpg'},
+    { id: '5', title:'bombilla',category: 'Accesorios',price: 1000,stock: 12,foto: 'assets/img/BOMBILLA.jpg'},
+    { id: '6', title:'bombilla',category: 'Accesorios',price: 1000,stock:17,foto: 'assets/img/BOMBILLA.jpg'},
+    { id: '7', title:'bombilla',category: 'Accesorios',price: 1000,stock: 16, foto: 'assets/img/BOMBILLA.jpg'}
     
     ]
 

@@ -1,50 +1,38 @@
-import { useState } from "react";
+import { useState } from 'react'
 
+const ItemCount = ({ stock, initial, onAdd }) => {
+  const [quantity, setQuantity] = useState(initial);
 
-const ItemCount= ({stock,initial,onAdd}) => {
-
-const [count,setCount] = useState (initial)
-
-function handleIncrease (){
-
-    if (count < stock){
-        setCount (count + 1)
+  const addQuantity = () => {
+    setQuantity(prev => prev + 1);
+    if (quantity === stock) {
+      setQuantity(quantity);
     }
-}
-function handleDecrease (){
-
-    if ( count > initial){
-        setCount (count -1)
+  }
+  const removeQuantity = () => {
+    setQuantity(prev => prev - 1);
+    if (quantity === 1) {
+      setQuantity(1);
     }
+  }
+  return (
+    <>
+      {stock === 0 ?
+        <button style={{ margin: "1rem" }} className="btn btn-danger" disabled>No disponible</button>
+        :
+        <>
+          <div className="buttons">
+            <button className="remove" onClick={removeQuantity}>-</button>
+            <input className="quantity" value={quantity} readOnly={true} />
+            <button className="add" onClick={addQuantity}>+</button>
+          </div>
+          <div class="d-grid gap-2 col-7 mx-auto">
+            <button type="submit" style={{ margin: "1rem" }} className="btn  btn-success" onClick={() => onAdd(quantity)}>Agregar al carrito</button>
+          </div>
+
+        </>}
+    </>
+  )
 }
 
- const add = () => {
-     onAdd (count)
- }
-
- return (
-<div className="container">
-    <div className="row">
-        <div className="col -1">
-
-            <div className="row">
-                <div className="d-flex justify-content-around col-1">
-                    <button className="btn-sm btn-success" onClick={handleDecrease}> - </button>
-                        <span className="mx-5"> {count}</span>
-                    <button className="btn-sm  btn-success" onClick={handleIncrease}> +</button>
-                    </div>
-
-                    <div>
-                    <div className="mt-5 col-1">
-                        <button className="btn btn-outline-success" onClick={add}>Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div> 
-         </div>
-        </div>
-    </div>
-                        )
-
-}
-
-export default ItemCount;
+export default ItemCount
